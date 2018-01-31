@@ -13,13 +13,14 @@ init();
 
 function init(){
 
-	resetButton.addEventListener("click", reset);
-	setupModeButtons();
+	setupButtons();
 	setupSquares();
 	reset();
 }
 
-function setupModeButtons(){
+function setupButtons(){
+	
+	resetButton.addEventListener("click", reset);
 
 	for(var i = 0; i < modeButtons.length; i++){
 		modeButtons[i].addEventListener("click", function(){
