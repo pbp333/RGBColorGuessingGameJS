@@ -13,7 +13,13 @@ init();
 
 function init(){
 
+	resetButton.addEventListener("click", reset);
+	setupModeButtons();
+	setupSquares();
 	reset();
+}
+
+function setupModeButtons(){
 
 	for(var i = 0; i < modeButtons.length; i++){
 		modeButtons[i].addEventListener("click", function(){
@@ -33,12 +39,10 @@ function init(){
 	}
 }
 
-resetButton.addEventListener("click", reset);
 
-function paintSquares(){
+function setupSquares(){
 
 	for(var i = 0; i < squares.length; i++){
-		squares[i].style.backgroundColor = colors[i];
 		squares[i].addEventListener("click", function(){
 			var clickedColor = this.style.backgroundColor;
 			if (clickedColor === pickedColor){
@@ -87,8 +91,10 @@ function reset(){
 	messageDisplay.textContent = "";
 	colorDisplay.textContent = pickedColor;
 	h1.style.backgroundColor = "steelblue";
-	resetButton.textContent = "New Colors"
-	paintSquares();
+	resetButton.textContent = "New Colors";
+	for(var i = 0; i < squares.length; i++){
+		squares[i].style.backgroundColor = colors[i];
+	}
 };
 
 function hideBottomSquares(){
